@@ -3,10 +3,15 @@ import matplotlib.pyplot as plt
 
 def relaxation(v, r, z, h):
     if r > 0:
-        v[r,h] = (v[r+1,z]+v[r-1,z]+v[r,z+1]+v[r,z-1])/4 + h*(v[r+1,z]-v[r-1,h])/(8*r)
+        v[r,z] = (v[r+1,z]+v[r-1,z]+v[r,z+1]+v[r,z-1])/4 + h*(v[r+1,z]-v[r-1,1])/(8*r)
     else:
-        v[r,h] = (4*v[h,z]+v[r,h+1]+v[r,z-1])
+        v[r,1] = (4*v[1,z]+v[r,z+1]+v[r,z-1])/6
     
 if __name__ == '__main__':
-    Vx, Vy = np.meshgrid(np.arange(1,10,0.1),np.arange(1,10,0.1))
-    print(Vx, Vy)
+    V = np.eye(10)
+    for n in range(0, 5):
+        for i in range(1, len(V)-1):
+            for j in range(1, len(V[i])-1):
+                relaxation(V, i, j, 0.1,)
+    plt.matshow(V)
+    plt.show()
