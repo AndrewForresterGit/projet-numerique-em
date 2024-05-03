@@ -35,6 +35,6 @@ if __name__ == '__main__':
 
     ax.set_xlim(0,120)
     ax.set_ylim(0, 60)
-    ax.matshow(np.concatenate((np.flip(V[1:,:], axis=0), V), axis=0), cmap='inferno')
+    ax.matshow(np.concatenate((np.flip(V[1:,:], axis=0), V), axis=0), cmap='viridis')
     # ax.contourf(np.concatenate((np.flip(V[1:,:], axis=0), V), axis=0), levels=100, cmap='inferno')
     plt.show()
